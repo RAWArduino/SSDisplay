@@ -1,9 +1,10 @@
 #include "SSDisplay.hpp"
 
 using RAW::Display::SSDisplay;
+using RAW::Display::Warning;
 
 SSDisplay::SSDisplay(uint8_t dig_sz, const uint8_t common[], uint8_t seg_sz, const uint8_t segment[], bool isCommonCathode):
-digSz(dig_sz),segSz(seg_sz)
+digSz(dig_sz),segSz(seg_sz),digitOn(digOn),segmentOn(segOn)
 {
 	uint8_t i;
     buffer=new uint8_t[digSz];
@@ -17,7 +18,7 @@ digSz(dig_sz),segSz(seg_sz)
 	// store segments in reverse order.
 	for(i=0;i<segSz;i++)this->segment[segSz-1-i]=segment[i];
 
-	temp_char=new char[digSz+2];
+	temp_char=new char[digSz+3];
 	memset(temp_char,0x00,digSz+2);
 
 	// arduino sprintf doesn't support the * template
@@ -57,13 +58,15 @@ void SSDisplay::suppressLeadingZeros(){
 	strcat(integer_template,"d");
 }
 
-void SSDisplay::setBrightness(uint8_t percent){
-	if(percent==0 || percent>100)percent=50;
+Warning SSDisplay::setBrightness(uint8_t percent){
+	Warning wrn=NO_WRN;
+	if(percent==0 || percent>100){percent=50; wrn=BRIGHTNESS_OUT_OF_RANGE;}
 	dispOnTime=percent*20;
+	return wrn;
 }
 
 
-void SSDisplay::write(const char msg[]){
+Warning SSDisplay::write(const char msg[]){
 	this->clean();
 	String check=String(msg);
 	check.replace(".",""); check.replace(",","");
@@ -72,12 +75,11 @@ void SSDisplay::write(const char msg[]){
 		uint8_t MINUS=pgm_read_byte_near(CHARACTERS);
 		for(uint8_t i=0;i<digSz;i++)buffer[i]=MINUS;
 		
-		return;
+		return DISPLAY_OVERFLOW;
 	}
 	
 	uint8_t digit=0;
-	uint8_t strlength=strlen(msg);
-	for(uint8_t i=0;i<(2*digSz)&&i<strlength;i++){
+	for(uint8_t i=0;i<(2*digSz)&&i<strlen(msg);i++){
 		switch((uint8_t)msg[i]){
 			case '3':
 				buffer[digit++]=pgm_read_byte_near(NUMBERS+3);
@@ -104,41 +106,36 @@ void SSDisplay::write(const char msg[]){
 				buffer[digit++]=pgm_read_byte_near(CHARACTERS+1);
 				break;
 
-			case 0xA7:
-			case 0xF8:
-				buffer[digit++]=pgm_read_byte_near(CHARACTERS+2);
-				break;
-
 			case 'a':
 			case 'A':
-				buffer[digit++]=pgm_read_byte_near(CHARACTERS+3);
+				buffer[digit++]=pgm_read_byte_near(CHARACTERS+2);
 				break;
 				
 			case 'b':
 			case 'B':
-				buffer[digit++]=pgm_read_byte_near(CHARACTERS+4);
+				buffer[digit++]=pgm_read_byte_near(CHARACTERS+3);
 				break;
 				
 			case 'c':
 			case 'C':
 			case '[':
 			case '(':
-				buffer[digit++]=pgm_read_byte_near(CHARACTERS+5);
+				buffer[digit++]=pgm_read_byte_near(CHARACTERS+4);
 				break;
 				
 			case 'd':
 			case 'D':
-				buffer[digit++]=pgm_read_byte_near(CHARACTERS+6);;
+				buffer[digit++]=pgm_read_byte_near(CHARACTERS+5);;
 				break;
 				
 			case 'e':
 			case 'E':
-				buffer[digit++]=pgm_read_byte_near(CHARACTERS+7);
+				buffer[digit++]=pgm_read_byte_near(CHARACTERS+6);
 				break;
 				
 			case 'f':
 			case 'F':
-				buffer[digit++]=pgm_read_byte_near(CHARACTERS+8);
+				buffer[digit++]=pgm_read_byte_near(CHARACTERS+7);
 				break;
 				
 			case 'g':
@@ -148,11 +145,11 @@ void SSDisplay::write(const char msg[]){
 				break;
 				
 			case 'h':
-				buffer[digit++]=pgm_read_byte_near(CHARACTERS+9);
+				buffer[digit++]=pgm_read_byte_near(CHARACTERS+8);
 				break;
 				
 			case 'H':
-				buffer[digit++]=pgm_read_byte_near(CHARACTERS+10);
+				buffer[digit++]=pgm_read_byte_near(CHARACTERS+9);
 				break;
 				
 			case 'i':
@@ -163,17 +160,17 @@ void SSDisplay::write(const char msg[]){
 
 			case 'j':
 			case 'J':
-				buffer[digit++]=pgm_read_byte_near(CHARACTERS+11);
+				buffer[digit++]=pgm_read_byte_near(CHARACTERS+10);
 				break;
 				
 			case 'l':
 			case 'L':
-				buffer[digit++]=pgm_read_byte_near(CHARACTERS+12);
+				buffer[digit++]=pgm_read_byte_near(CHARACTERS+11);
 				break;
 				
 			case 'N':
 			case 'n':
-				buffer[digit++]=pgm_read_byte_near(CHARACTERS+13);
+				buffer[digit++]=pgm_read_byte_near(CHARACTERS+12);
 				break;
 				
 			case 'o':
@@ -184,12 +181,12 @@ void SSDisplay::write(const char msg[]){
 			
 			case 'p':
 			case 'P':
-				buffer[digit++]=pgm_read_byte_near(CHARACTERS+14);
+				buffer[digit++]=pgm_read_byte_near(CHARACTERS+13);
 				break;
 			
 			case 'r':
 			case 'R':
-				buffer[digit++]=pgm_read_byte_near(CHARACTERS+15);
+				buffer[digit++]=pgm_read_byte_near(CHARACTERS+14);
 				break;
 				
 			case 's':
@@ -200,7 +197,7 @@ void SSDisplay::write(const char msg[]){
 				
 			case 'u':
 			case 'U':
-				buffer[digit++]=pgm_read_byte_near(CHARACTERS+16);
+				buffer[digit++]=pgm_read_byte_near(CHARACTERS+15);
 				break;
 				
 			case 'z':
@@ -222,20 +219,23 @@ void SSDisplay::write(const char msg[]){
 				digit++;
 		}
 	}
+
+	return NO_WRN;
 }
 
 
-void SSDisplay::write(float number){
-	memset(temp_char,'\0',digSz+2);
-	dtostrf(number,digSz+1,digSz-1,temp_char);
-	temp_char[digSz+1]='\0';
-    this->write(temp_char);
+Warning SSDisplay::write(float number, uint8_t prec){
+	Warning wrn=NO_WRN;
+	if((number<0.0f?-number:number)-abs((int)number)==0.0f){prec=1; wrn=PRECISION_FORCED_TO_ONE;}
+	else if(prec==0||prec>=digSz){prec=digSz-1; wrn=PRECISION_OUT_OF_RANGE;}
+	dtostrf(number,digSz+1,prec,temp_char);
+	return wrn|this->write(temp_char);
 }
 
-void SSDisplay::write(int number){
+Warning SSDisplay::write(int number){
 	memset(temp_char,'\0',digSz+2);
 	sprintf(temp_char,integer_template,number);
-    this->write(temp_char);
+    return this->write(temp_char);
 }
 
 
@@ -252,13 +252,15 @@ void SSDisplay::blink(uint8_t amnt){
     lastBlinkTime=millis();
 }
 
-void SSDisplay::setBlinkInterval(uint16_t value){
-	if(value<120)value=120;
-	blinkInterval=value;
+Warning SSDisplay::setBlinkInterval(uint16_t interval){
+	Warning wrn=NO_WRN;
+	if(interval<120){interval=120; wrn=INTERVAL_OUT_OF_RANGE;}
+	blinkInterval=interval;
+	return wrn;
 }
 
 
-void SSDisplay::updateHook(){
+void SSDisplay::update(){
     if(blinkAmt){
 		switch(blinkState){
 		case 0:
@@ -295,7 +297,7 @@ void SSDisplay::updateHook(){
 				(!digOn)?(buffer[currDigit]>>j)&0x01 : !((buffer[currDigit]>>j)&0x01)
 			);
 		}
-		onTurnOn();
+		onShow();
 		internalState=2;
 		lastDispTime=micros();
 		break;
@@ -304,7 +306,7 @@ void SSDisplay::updateHook(){
 		if(micros()-lastDispTime<dispOnTime)return;
 		for(j=0;j<segSz;j++)digitalWrite(segment[j], !segOn);
 		digitalWrite(common[currDigit], !digOn);
-		onTurnOff();
+		onHide();
 		internalState=3;
 		lastDispTime=micros();
 		break;
