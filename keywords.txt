@@ -1,0 +1,14 @@
+SSDisplay   KEYWORD1
+Warning     KEYWORD1
+
+suppressLeadingZeros()  KEYWORD2
+setBlinkInterval()      KEYWORD2
+setBrightness()         KEYWORD2
+SSDisplay()             KEYWORD2
+lightUp()               KEYWORD2
+update()                KEYWORD2
+write()                 KEYWORD2
+blink()                 KEYWORD2
+clean()                 KEYWORD2
+onHide()                KEYWORD2
+onShow()                KEYWORD2

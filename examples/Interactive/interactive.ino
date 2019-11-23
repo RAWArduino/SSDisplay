@@ -21,7 +21,7 @@ using RAW::Display::SSDisplay;
 uint8_t digits[]={41,39,35};
 uint8_t segs[]={45,43,33,31,47,27,37,29};
 
-// Instance for a common cathode, three-digits and seven-segments display
+// Instance for a common cathode, three-digits and seven-segment display
 SSDisplay display(3,digits,8,segs, true);
 
 size_t size;

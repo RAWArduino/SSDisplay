@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.16"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RAWArduino: 7-Segments Display (SSDisplay)</title>
+<title>RAWArduino: 7-Segment Display (SSDisplay)</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,13 +62,13 @@ $(function() {
 
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">7-Segments Display (SSDisplay) </div>  </div>
+<div class="title">7-Segment Display (SSDisplay) </div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><h1><a class="anchor" id="autotoc_md1"></a>
 Introduction</h1>
-<p>Following the proposal of <em>RAWArduino</em>, <em>SSDisplay</em> is a library to control common-cathode and common-anode 7-segments displays directly from Arduino without any external integrated circuit. At first, it implements the main functionalities of a LED 7-segments display, controlling digits and decimal points exhibition. However, you may extend <em>SSDisplay</em> to meet your needs, given that it has similarity with template-method pattern. Thus, you can override the hook methods <code>onShow()</code> and <code>onHide()</code> to extend its functionalities when LEDs turn on or off, respectively. This is useful if your display has peculiarities like colons or apostrophe.</p>
-<p>Keep in mind that the main aim of all <em>RAWArduino</em> libraries is prototyping, study and research; allowing fast building at low cost. Furthermore, such a project doesn't use third party libraries and is compliant with <em>Platformio</em> requirements. <br  />
+<p>Following the proposal of <em>RAWArduino</em>, <em>SSDisplay</em> is a library to control common-cathode and common-anode 7-segment displays directly from Arduino without any external integrated circuit. At first, it implements the main functionalities of a LED 7-segment display, controlling digits and decimal points exhibition. However, you may extend <em>SSDisplay</em> to meet your needs, given that it has similarity with template-method pattern. Thus, you can override the hook methods <code>onShow()</code> and <code>onHide()</code> to extend its functionalities when LEDs turn on or off, respectively. This is useful if your display has peculiarities like colons or apostrophe.</p>
+<p>Keep in mind that the main aim of all <em>RAWArduino</em> libraries is prototyping, study and research; allowing fast building at low cost. Furthermore, such a project doesn't use third party libraries and is compliant with <em>PlatformIO</em> requirements. <br  />
 <br  />
 </p>
 <h1><a class="anchor" id="autotoc_md2"></a>
@@ -126,7 +126,7 @@ Basic usage</h1>
 <div class="line">    // adjust the brightness in 20% of capacity.</div>
 <div class="line">    Warning wrn=display.setBrightness(20);</div>
 <div class="line">    // causing display overflow because display has 3 digits.</div>
-<div class="line">    wrn|=display.write(&quot;Heys.&quot;);</div>
+<div class="line">    wrn|=display.write(&quot;Hello.&quot;);</div>
 <div class="line">    // is there some warning?</div>
 <div class="line">    if(wrn!=Warning::NO_WRN){</div>
 <div class="line">        // write Hi.</div>

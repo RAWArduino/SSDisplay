@@ -82,8 +82,8 @@ namespace RAW{
         
 
         /**
-         * LED 7-segments displays.
-         * This class controls LED 7-segments displays, which can be common-cathode or common-anode.
+         * LED 7-segment displays.
+         * This class controls LED 7-segment displays, which can be common-cathode or common-anode.
          * @author Kelvin S. Amorim
          */
         class SSDisplay{

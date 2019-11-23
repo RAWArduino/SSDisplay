@@ -1,10 +1,10 @@
-#### 7-Segments Display (SSDisplay)
+#### 7-Segment Display (SSDisplay)
 
 # Introduction
 
-Following the proposal of *RAWArduino*, *SSDisplay* is a library to control common-cathode and common-anode 7-segments displays directly from Arduino without any external integrated circuit. At first, it implements the main functionalities of a LED 7-segments display, controlling digits and decimal points exhibition. However, you may extend *SSDisplay* to meet your needs, given that it has similarity with template-method pattern. Thus, you can override the hook methods `onShow()` and `onHide()` to extend its functionalities when LEDs turn on or off, respectively. This is useful if your display has peculiarities like colons or apostrophe.
+Following the proposal of *RAWArduino*, *SSDisplay* is a library to control common-cathode and common-anode 7-segment displays directly from Arduino without any external integrated circuit. At first, it implements the main functionalities of a LED 7-segment display, controlling digits and decimal points exhibition. However, you may extend *SSDisplay* to meet your needs, given that it has similarity with template-method pattern. Thus, you can override the hook methods `onShow()` and `onHide()` to extend its functionalities when LEDs turn on or off, respectively. This is useful if your display has peculiarities like colons or apostrophe.
 
-Keep in mind that the main aim of all *RAWArduino* libraries is prototyping, study and research; allowing fast building at low cost. Furthermore, such a project doesn't use third party libraries and is compliant with *Platformio* requirements.
+Keep in mind that the main aim of all *RAWArduino* libraries is prototyping, study and research; allowing fast building at low cost. Furthermore, such a project doesn't use third party libraries and is compliant with *PlatformIO* requirements.
 <br/><br/>
 
 # Features
@@ -59,7 +59,7 @@ void setup()
     // adjust the brightness in 20% of capacity.
     Warning wrn=display.setBrightness(20);
     // causing display overflow because display has 3 digits.
-    wrn|=display.write("Heys.");
+    wrn|=display.write("Hello.");
     // is there some warning?
     if(wrn!=Warning::NO_WRN){
         // write Hi.

@@ -19,7 +19,7 @@ void setup()
     // adjust the brightness in 20% of capacity.
     Warning wrn=display.setBrightness(20);
     // causing display overflow because display has 3 digits.
-    wrn|=display.write("Heys.");
+    wrn|=display.write("Hello.");
     // is there some warning?
     if(wrn!=Warning::NO_WRN){
         // write Hi.
