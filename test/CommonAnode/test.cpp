@@ -1,3 +1,8 @@
+/**
+ * Basic tests for common anode 7-segments LCD displays.
+ * @author Peter Wakabayashi
+ */
+
 #include <unity.h>
 #include <SSDisplay.hpp>
 

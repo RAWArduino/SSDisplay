@@ -7,6 +7,7 @@ namespace RAW{
     /**
      * Groups technologies of displays.
      * Some technologies may be LED, LCD and so on.
+     * @author Peter Wakabayashi
      */
     namespace Display{
         // number from 0 up to 9
@@ -38,6 +39,7 @@ namespace RAW{
         /**
          * Enumeration of fixed type for handling warnings.
          * Writer and setter methods return a combination of Warning enumerators that can be verified with bitmask.
+         * @author Peter Wakabayashi
          */
         enum Warning:uint8_t{
             NO_WRN=0, ///< No Warning. Allright.

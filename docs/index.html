@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.16"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RAWArduino: 7-Segment Display (SSDisplay)</title>
+<title>SSDisplay: 7-Segment Display (SSDisplay)</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">RAWArduino
+   <div id="projectname">SSDisplay
    </div>
   </td>
  </tr>
@@ -67,21 +67,21 @@ $(function() {
 <div class="contents">
 <div class="textblock"><h1><a class="anchor" id="autotoc_md1"></a>
 Introduction</h1>
-<p>Following the proposal of <em>RAWArduino</em>, <em>SSDisplay</em> is a library to control common-cathode and common-anode 7-segment displays directly from Arduino without any external integrated circuit. At first, it implements the main functionalities of a LED 7-segment display, controlling digits and decimal points exhibition. However, you may extend <em>SSDisplay</em> to meet your needs, given that it has similarity with template-method pattern. Thus, you can override the hook methods <code>onShow()</code> and <code>onHide()</code> to extend its functionalities when LEDs turn on or off, respectively. This is useful if your display has peculiarities like colons or apostrophe.</p>
-<p>Keep in mind that the main aim of all <em>RAWArduino</em> libraries is prototyping, study and research; allowing fast building at low cost. Furthermore, such a project doesn't use third party libraries and is compliant with <em>PlatformIO</em> requirements. <br  />
+<p><em>SSDisplay</em> is a library to control common-cathode and common-anode 7-segment displays directly from Arduino without any external integrated circuit. At first, it implements the main functionalities of a LED 7-segment display, controlling digits and decimal points exhibition. However, you may extend <em>SSDisplay</em> to meet your needs, given that it has similarity with template-method pattern. Thus, you can override the hook methods <code>onShow()</code> and <code>onHide()</code> to extend its functionalities when LEDs turn on or off, respectively. This is useful if your display has peculiarities like colons or apostrophe.</p>
+<p>Keep in mind that the main aim of this library is prototyping, study and research. Furthermore, such a project doesn't use third party libraries and is compliant with <em>PlatformIO</em> requirements. <br  />
 <br  />
 </p>
 <h1><a class="anchor" id="autotoc_md2"></a>
 Features</h1>
 <ul>
 <li><p class="startli">Brightness adjust</p>
-<p class="startli">&emsp;&emsp; <img src="https://github.com/RAWArduino/SSDisplay/raw/master/docs/images/brightness.gif" alt="" width="70" class="inline"/></p>
+<p class="startli">&emsp;&emsp; <img src="https://github.com/peterwaka/SSDisplay/raw/master/docs/images/brightness.gif" alt="" width="70" class="inline"/></p>
 </li>
 <li><p class="startli">Suppression of leading zeros</p>
-<p class="startli">&emsp;&emsp; <img src="https://github.com/RAWArduino/SSDisplay/raw/master/docs/images/leadingZero.png" alt="" width="70" class="inline"/></p>
+<p class="startli">&emsp;&emsp; <img src="https://github.com/peterwaka/SSDisplay/raw/master/docs/images/leadingZero.png" alt="" width="70" class="inline"/></p>
 </li>
 <li><p class="startli">Display blink with adjust of interval</p>
-<p class="startli">&emsp;&emsp; <img src="https://github.com/RAWArduino/SSDisplay/raw/master/docs/images/blink300.gif" alt="" width="70" class="inline"/> &emsp;&emsp;&gt;&gt;&gt;<sup>+200 ms</sup>&emsp;&emsp; <img src="https://github.com/RAWArduino/SSDisplay/raw/master/docs/images/blink500.gif" alt="" width="70" class="inline"/></p>
+<p class="startli">&emsp;&emsp; <img src="https://github.com/peterwaka/SSDisplay/raw/master/docs/images/blink300.gif" alt="" width="70" class="inline"/> &emsp;&emsp;&gt;&gt;&gt;<sup>+200 ms</sup>&emsp;&emsp; <img src="https://github.com/peterwaka/SSDisplay/raw/master/docs/images/blink500.gif" alt="" width="70" class="inline"/></p>
 </li>
 <li>Alphanumeric characters</li>
 </ul>
@@ -89,7 +89,7 @@ Features</h1>
 <tr class="markdownTableHead">
 <th class="markdownTableHeadLeft">Characters  </th><th class="markdownTableHeadCenter">A  </th><th class="markdownTableHeadCenter">B  </th><th class="markdownTableHeadCenter">C  </th><th class="markdownTableHeadCenter">D  </th><th class="markdownTableHeadCenter">E  </th><th class="markdownTableHeadCenter">F  </th><th class="markdownTableHeadCenter">G  </th><th class="markdownTableHeadCenter">H  </th><th class="markdownTableHeadCenter">h  </th><th class="markdownTableHeadCenter">I  </th><th class="markdownTableHeadCenter">J  </th><th class="markdownTableHeadCenter">L  </th><th class="markdownTableHeadCenter">N  </th><th class="markdownTableHeadCenter">O  </th><th class="markdownTableHeadCenter">P  </th><th class="markdownTableHeadCenter">R  </th><th class="markdownTableHeadCenter">S  </th><th class="markdownTableHeadCenter">U  </th><th class="markdownTableHeadCenter">Z   </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyLeft"><b>Exhibition</b>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/RAWArduino/SSDisplay/raw/master/docs/images/A.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/RAWArduino/SSDisplay/raw/master/docs/images/B.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/RAWArduino/SSDisplay/raw/master/docs/images/C.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/RAWArduino/SSDisplay/raw/master/docs/images/D.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/RAWArduino/SSDisplay/raw/master/docs/images/E.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/RAWArduino/SSDisplay/raw/master/docs/images/F.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/RAWArduino/SSDisplay/raw/master/docs/images/G.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/RAWArduino/SSDisplay/raw/master/docs/images/H.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/RAWArduino/SSDisplay/raw/master/docs/images/mh.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/RAWArduino/SSDisplay/raw/master/docs/images/I.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/RAWArduino/SSDisplay/raw/master/docs/images/J.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/RAWArduino/SSDisplay/raw/master/docs/images/L.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/RAWArduino/SSDisplay/raw/master/docs/images/N.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/RAWArduino/SSDisplay/raw/master/docs/images/O.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/RAWArduino/SSDisplay/raw/master/docs/images/P.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/RAWArduino/SSDisplay/raw/master/docs/images/R.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/RAWArduino/SSDisplay/raw/master/docs/images/S.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/RAWArduino/SSDisplay/raw/master/docs/images/U.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/RAWArduino/SSDisplay/raw/master/docs/images/Z.png" alt="" class="inline"/>   </td></tr>
+<td class="markdownTableBodyLeft"><b>Exhibition</b>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/peterwaka/SSDisplay/raw/master/docs/images/A.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/peterwaka/SSDisplay/raw/master/docs/images/B.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/peterwaka/SSDisplay/raw/master/docs/images/C.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/peterwaka/SSDisplay/raw/master/docs/images/D.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/peterwaka/SSDisplay/raw/master/docs/images/E.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/peterwaka/SSDisplay/raw/master/docs/images/F.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/peterwaka/SSDisplay/raw/master/docs/images/G.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/peterwaka/SSDisplay/raw/master/docs/images/H.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/peterwaka/SSDisplay/raw/master/docs/images/mh.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/peterwaka/SSDisplay/raw/master/docs/images/I.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/peterwaka/SSDisplay/raw/master/docs/images/J.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/peterwaka/SSDisplay/raw/master/docs/images/L.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/peterwaka/SSDisplay/raw/master/docs/images/N.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/peterwaka/SSDisplay/raw/master/docs/images/O.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/peterwaka/SSDisplay/raw/master/docs/images/P.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/peterwaka/SSDisplay/raw/master/docs/images/R.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/peterwaka/SSDisplay/raw/master/docs/images/S.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/peterwaka/SSDisplay/raw/master/docs/images/U.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/peterwaka/SSDisplay/raw/master/docs/images/Z.png" alt="" class="inline"/>   </td></tr>
 </table>
 <p><em>Only H letter is case sensitive.</em> <br  />
 <br  />
@@ -98,7 +98,7 @@ Features</h1>
 <tr class="markdownTableHead">
 <th class="markdownTableHeadLeft">Special Characters  </th><th class="markdownTableHeadCenter">[(  </th><th class="markdownTableHeadCenter">])  </th><th class="markdownTableHeadCenter">-   </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyLeft"><b>Exhibition</b>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/RAWArduino/SSDisplay/raw/master/docs/images/C.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/RAWArduino/SSDisplay/raw/master/docs/images/paren.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/RAWArduino/SSDisplay/raw/master/docs/images/minus.png" alt="" class="inline"/>   </td></tr>
+<td class="markdownTableBodyLeft"><b>Exhibition</b>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/peterwaka/SSDisplay/raw/master/docs/images/C.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/peterwaka/SSDisplay/raw/master/docs/images/paren.png" alt="" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/peterwaka/SSDisplay/raw/master/docs/images/minus.png" alt="" class="inline"/>   </td></tr>
 </table>
 <p><br  />
 </p>
@@ -139,12 +139,12 @@ Basic usage</h1>
 <div class="line">    // Calling the update method.</div>
 <div class="line">    display.update();</div>
 <div class="line">}</div>
-</div><!-- fragment --><p>For more examples, see the <a href="https://github.com/RAWArduino/SSDisplay/tree/master/example">example</a> folder. And look at the <a href="https://rawarduino.github.io/SSDisplay">docs</a> for more details. <br  />
+</div><!-- fragment --><p>For more examples, see the <a href="https://github.com/peterwaka/SSDisplay/tree/master/examples">example</a> folder. And look at the <a href="https://peterwaka.github.io/SSDisplay">docs</a> for more details. <br  />
 <br  />
 </p>
 <h1><a class="anchor" id="autotoc_md4"></a>
 Changelog</h1>
-<p>For changelogs, see <a href="https://github.com/RAWArduino/SSDisplay/releases">Releases</a>. </p>
+<p>For changelogs, see <a href="https://github.com/peterwaka/SSDisplay/releases">Releases</a>. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
