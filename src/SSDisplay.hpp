@@ -104,14 +104,14 @@ namespace RAW{
                 const bool &segmentOn; ///< It's true for common cathode and false for common anode. Use it to turn on/off a segment.
 
                 /**
-                 * A hook method for subclass implement.
+                 * A hook method for subclass to implement.
                  * It's called while display is showing something.
                  * @remark this method can be used to turn on special characters like colon or apostrophe.
                  */
                 virtual void onShow(){}
 
                 /**
-                 * A hook method for subclass implement.
+                 * A hook method for subclass to implement.
                  * It's called while display is showing nothing.
                  * @remark this method can be used to turn off special characters like colon or apostrophe.
                  */
@@ -154,7 +154,7 @@ namespace RAW{
 
                 /**
                  * Test if all display's segment are working.
-                 * @remark it uses a busy wait, avoid call it in a loop.
+                 * @remark it uses busy wait, avoid call it in a loop.
                  */
                 void lightUp();
 
