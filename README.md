@@ -1,2 +1,5 @@
-# SSDisplay
-Library to control LED 7-segments displays directly from Arduino
+#### 7-Segment Display (SSDisplay)
+
+*SSDisplay* is a library to control common-cathode and common-anode 7-segment displays directly from Arduino without any external integrated circuit. At first, it implements the main functionalities of a LED 7-segment display, controlling digits and decimal points exhibition. However, you may extend *SSDisplay* to meet your needs, given that it has similarity with template-method pattern. Thus, you can override the hook methods `onShow()` and `onHide()` to extend its functionalities when LEDs turn on or off, respectively. This is useful if your display has peculiarities like colons or apostrophe.
+
+Keep in mind that the main aim of this library is prototyping and study. Furthermore, such a project doesn't use third party libraries and is compliant with *PlatformIO* requirements.
